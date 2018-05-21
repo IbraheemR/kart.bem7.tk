@@ -2,23 +2,24 @@ var height;
 
 $(window).resize(function() {
   height = $(".img").height();
-})
+});
 
-$("body").scroll(function() {
-  var pos = $("body").scrollTop();
+$(window).scroll(function() {
+  var pos = $(window).scrollTop();
 
-  id = Math.round((pos)/height ) + 1; // Figureout which image we are looking at
-  
+  var id = Math.round( (pos)/height ) + 1; // Figureb out which image we are looking at
+
   $("#caption").html(
-    $(".img#" + id).html() //Associated caption
-  );
-})
+    $("#img" + id).html()
+  );// Load associated caption
+});
 
 // Init
 $(window).resize();
-$("body").scroll();
+$(window).scroll();
 
-$(".img").each(function() { // Load images 
+// Load images 
+$(".img").each(function() {
   var img = $(this).attr("image") || "https://picsum.photos/1200/800/?random";
   $(this).css("background-image", "url("+img+")");
 });
